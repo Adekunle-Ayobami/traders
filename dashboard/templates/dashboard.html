@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Traders Dashboard</title>
+</head>
+<body>
+    {% block content %}
+    <h1>Traders Dashboard</h1>
+    <table>
+        <tr>
+            <th>Trader</th>
+            <th>Initial Balance</th>
+            <th>Current Balance</th>
+            <th>Profit/Loss</th>
+        </tr>
+        {% for trader in traders %}
+        <tr>
+            <td>{{ trader.name }}</td>
+            <td>{{ trader.initial_balance }}</td>
+            <td>{{ trader.current_balance }}</td>
+            <td>{{ trader.current_balance|floatformat:2 }}</td>
+            <td><a href="{% url 'edit_trader' trader.id %}">Edit</a></td>
+        </tr>
+        {% endfor %}
+    </table>
+    <a href="{% url 'add_trader' %}">Add Trader</a>
+    <form action="{% url 'simulate_profit_loss' %}" method="post">
+        {% csrf_token %}
+        <input type="submit" value="Simulate Profit/Loss">
+    </form>
+    <a href="{% url 'profit_loss_graph' %}">View Profit/Loss Graph</a>
+    {% endblock %}
+</body>
+</html>

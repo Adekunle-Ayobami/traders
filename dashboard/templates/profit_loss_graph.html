@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Profit/Loss Graph</title>
+</head>
+<body>
+{% block content %}	
+    <h1>Profit/Loss Graph</h1>
+    <img src="{{ graph_file }}" alt="Profit/Loss Graph">
+    <br>
+    <a href="{% url 'dashboard' %}">Go to Dashboard</a>
+{% endblock %}    
+</body>
+</html>
