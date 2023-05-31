@@ -1,5 +1,6 @@
 from django.contrib import admin
 from django.urls import path
+from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 from dashboard.views import dashboard, add_trader, edit_trader, simulate_profit_loss, profit_loss_graph
 
 urlpatterns = [
@@ -10,3 +11,5 @@ urlpatterns = [
     path('dashboard/simulate-profit-loss/', simulate_profit_loss, name='simulate_profit_loss'),
     path('dashboard/profit-loss-graph/', profit_loss_graph, name='profit_loss_graph'),
 ]
+
+urlpatterns += staticfiles_urlpatterns()
